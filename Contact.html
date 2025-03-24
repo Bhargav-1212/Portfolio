@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="shortcut icon" href="boy.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("public_I2cWSUANI_aAI0VYA"); // Replace with your actual EmailJS user ID
+        })();
+    </script>
+</head>
+<body class="bg-gray-800 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-lg p-8 bg-gray-700 rounded-lg shadow-lg">
+        <h1 class="text-4xl font-bold text-center text-white mb-4">Contact Me</h1>
+        <p class="text-center text-gray-300 mb-8">We'd love to hear from you!</p>
+        <form id="contact-form">
+            <div class="mb-4">
+                <input type="text" id="name" placeholder="Name" class="w-full p-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="flex mb-4 space-x-4">
+                <input type="email" id="email" placeholder="Email" class="w-1/2 p-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="text" id="phone" placeholder="Phone Number" class="w-1/2 p-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <textarea id="message" placeholder="Message" class="w-full p-3 h-32 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Send Message</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect form data
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var message = document.getElementById('message').value;
+
+            // Send email using EmailJS
+            emailjs.send("service_v5qxlcv", "template_pr0a2yh", {
+                from_name: name,
+                from_email: email,
+                phone_number: phone,
+                message: message,
+                to_email: "bhagravc1212@gmail.com" // Your email as the recipient
+            })
+            .then(function(response) {
+                alert('Message sent successfully!');
+                document.getElementById('contact-form').reset(); // Reset the form after successful submission
+            }, function(error) {
+                alert('Failed to send message. Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>

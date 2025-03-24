@@ -1,0 +1,29 @@
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+.rounded-lg {
+    width: 100%;  /* Full width on mobile */
+    max-width: 400px;  /* Limit size on larger screens */
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Adjust for larger screens */
+@media (max-width: 768px) {
+    .desktop-version {
+        display: none;
+    }
+    .mobile-version {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .desktop-version {
+        display: block;
+    }
+    .mobile-version {
+        display: none;
+    }
+}
